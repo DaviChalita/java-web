@@ -7,13 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<%
-
-session.invalidate();
-response.sendRedirect("home.jsp");
-
-%>
-
+<h1>Conta criada com sucesso!</h1>
 </body>
 </html>

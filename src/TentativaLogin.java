@@ -16,16 +16,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 /**
- * Servlet implementation class Login
+ * Servlet implementation class TentativaLogin
  */
-@WebServlet("/Login")
-public class Login extends HttpServlet {
+@WebServlet("/TentativaLogin")
+public class TentativaLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Login() {
+    public TentativaLogin() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,23 +44,23 @@ public class Login extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		PrintWriter out = response.getWriter();
+PrintWriter out = response.getWriter();
 		
-		String name = request.getParameter("name");
-		String pass = request.getParameter("pass");
+		String email = request.getParameter("Email");
+		String senha = request.getParameter("Senha");
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection con = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/loginandlogout?useTimezone=true&serverTimezone=UTC","root","");
+					.getConnection("jdbc:mysql://localhost:3306/twitterlookalike?useTimezone=true&serverTimezone=UTC","root","");
 			Statement stmt = con.createStatement();
-			ResultSet rs = stmt.executeQuery("select uname, upass from user_reg where uname = '"+name+"' and upass = '"+pass+"'");
+			ResultSet rs = stmt.executeQuery("select email, senha from usuario where email = '"+email+"' and senha = '"+senha+"'");
 
 			
 			if(rs.next()) {
-		        response.sendRedirect("http://localhost:8080/LoginDemo/WelcomeUser.jsp?name="+rs.getString("uname"));
+		        response.sendRedirect("http://localhost:8080/TwitterLookAlike/home.jsp?email="+rs.getString("email"));
 		        HttpSession session = request.getSession();
-		        session.setAttribute("uname", name);
+		        session.setAttribute("email", email);
 			}else {
 				out.println("Wrong username or password");
 			}			
@@ -72,7 +72,6 @@ public class Login extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 }

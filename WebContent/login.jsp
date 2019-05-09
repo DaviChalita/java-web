@@ -2,21 +2,36 @@
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/shared.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="shortcut icon" href="img/favicon.ico" />
 </head>
+
 <body>
-
-<form action="Login" method="post">
-<pre>
-
- UserName: <input type="text" name="name">
- Password: <input type="text" name="pass">
- 		   <input type="submit" value="Submit">	 
-
-</pre>
-</form>
-
+    <main class="container flex-container">
+        <div class="center">
+            <h1 class="h1-container left">Mais de um bilhão de usuários já cadastrados</h1>
+        </div>
+        <div class="center">
+            <div class="container form-container">
+                <img src="img/logo.png" class="logo">
+                <form action="TentativaLogin" method="POST">
+                    <input type="email" name="Email" placeholder="Email">
+                    <input type="password" name="Senha" placeholder="Senha">
+                    <a class='form-link' href="esqueceu-senha.jsp">Esqueci minha senha</a>
+                    <a class='form-link' href="cadastro.jsp">Crie uma conta</a>
+                    <input type="submit" value="Entrar" class="btn btn--main">
+                </form>
+            </div>   
+        </div>
+        <div class="center">
+            <h1 class="h1-container right">Crie uma conta e acesse já!</h1>
+        </div>
+    </main>
 </body>
+
 </html>
