@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-
 <head>
     <meta charset="UTF-8">
     <title> Página principal </title>
@@ -13,6 +12,15 @@
 </head>
 
 <body>
+<%
+
+
+
+request.getSession(false);
+if(session == null){
+	out.println("Deu ruim");
+}else{
+%>
     <nav class="navbar">
         <a class="active" href="/login.jsp">Sair</a>
     </nav>
@@ -20,8 +28,14 @@
         <div class="user-box container">
             <a class="user-icon"></a>
             <div class="user-info">
-                <p class="user-name">Aang</p>
-                <p class="user-nick">@otaldoavatar</p>
+                <p class="user-name"><%
+                String email = request.getParameter("email");
+                out.println(email);
+                %></p>
+                <p class="user-nick"><%
+               // String nomeusuario = request.getParameter("nomeusuario");
+                //out.println(nomecompleto);
+                %></p>
             </div>
             <button class="btn btn--small btn--sair">Sair</button> <!-- acertar esse botao -->
         </div>
@@ -82,6 +96,7 @@
             </div>
         </div>
     </main>
+   <%} %>
 </body>
 
 </html>

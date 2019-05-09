@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import connect.TryConnection;
+
 /**
  * Servlet implementation class CriaConta
  */
@@ -48,9 +50,8 @@ public class CriaConta extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/twitterlookalike?useTimezone=true&serverTimezone=UTC","root","");
+			Connection con = TryConnection.tryConnection();
+			//Connection con = new TryConnection().getConnection();
 			PreparedStatement st = con.prepareStatement("insert into usuario values(?,?,?,?,?)");
 			st.setString(1, request.getParameter("Email"));
 			st.setString(2, request.getParameter("Nome completo"));
@@ -79,5 +80,7 @@ public class CriaConta extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+
+	
 
 }

@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import connect.TryConnection;
+
 /**
  * Servlet implementation class TentativaLogin
  */
@@ -44,18 +46,15 @@ public class TentativaLogin extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-PrintWriter out = response.getWriter();
+		PrintWriter out = response.getWriter();
 		
 		String email = request.getParameter("Email");
 		String senha = request.getParameter("Senha");
 		
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager
-					.getConnection("jdbc:mysql://localhost:3306/twitterlookalike?useTimezone=true&serverTimezone=UTC","root","");
+			Connection con = TryConnection.tryConnection();
 			Statement stmt = con.createStatement();
 			ResultSet rs = stmt.executeQuery("select email, senha from usuario where email = '"+email+"' and senha = '"+senha+"'");
-
 			
 			if(rs.next()) {
 		        response.sendRedirect("http://localhost:8080/TwitterLookAlike/home.jsp?email="+rs.getString("email"));
