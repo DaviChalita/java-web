@@ -13,13 +13,11 @@
 
 <body>
 <%
-
-
-
 request.getSession(false);
 if(session == null){
 	out.println("Deu ruim");
 }else{
+	String email = request.getParameter("email");
 %>
     <nav class="navbar">
         <a class="active" href="/login.jsp">Sair</a>
@@ -29,13 +27,9 @@ if(session == null){
             <a class="user-icon"></a>
             <div class="user-info">
                 <p class="user-name"><%
-                String email = request.getParameter("email");
                 out.println(email);
                 %></p>
-                <p class="user-nick"><%
-               // String nomeusuario = request.getParameter("nomeusuario");
-                //out.println(nomecompleto);
-                %></p>
+                <p class="user-nick"></p>
             </div>
             <button class="btn btn--small btn--sair">Sair</button> <!-- acertar esse botao -->
         </div>
