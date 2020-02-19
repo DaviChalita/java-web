@@ -1,3 +1,2 @@
-# java-web-ugh
+# java-web
 Repositorio de Java Web
-![alt text](https://i.imgur.com/IAgtHzH.png)
